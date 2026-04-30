@@ -15,9 +15,15 @@
         :root { --pink-main: #d63384; --pink-light: #ffdae9; --bg-pink: #fff5f8; }
         body { background-color: var(--bg-pink); font-family: 'Quicksand', sans-serif; color: #5a5a5a; overflow-x: hidden; }
         
-        .header-section { 
-            background: var(--pink-light); 
-            padding: 40px 0 100px 0; 
+       .header-section { 
+            /* CHÈN ẢNH NỀN TẠI ĐÂY */
+            /* Dùng linear-gradient để phủ một lớp sương trắng mờ 60% lên ảnh, giúp dòng chữ và đồng hồ vẫn nổi bật không bị chìm vào ảnh nền */
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('./anh-nen.jpg');
+            background-size: cover; /* Tự động phóng to ảnh lấp đầy khung */
+            background-position: center; /* Căn giữa bức ảnh */
+            background-repeat: no-repeat;
+            
+            padding: 50px 0 120px 0; /* Tăng khoảng trống một chút để lộ ảnh nền nhiều hơn */
             border-bottom-left-radius: 50% 15%; 
             border-bottom-right-radius: 50% 15%; 
             text-align: center; 
