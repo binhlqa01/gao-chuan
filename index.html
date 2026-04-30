@@ -13,7 +13,7 @@
     
     <style>
         :root { --pink-main: #d63384; --pink-light: #ffdae9; --bg-pink: #fff5f8; }
-        body { background-color: var(--bg-pink); font-family: 'Quicksand', sans-serif; color: #5a5a5a; }
+        body { background-color: var(--bg-pink); font-family: 'Quicksand', sans-serif; color: #5a5a5a; overflow-x: hidden; }
         
         .header-section { 
             background: var(--pink-light); 
@@ -24,75 +24,47 @@
         }
         
         /* PHONG CÁCH CHỮ KÝ */
-        h1, .signature-title { 
-            font-family: 'Great Vibes', cursive; 
-            color: var(--pink-main); 
-            font-weight: 400;
-        }
-
+        h1, .signature-title { font-family: 'Great Vibes', cursive; color: var(--pink-main); font-weight: 400; }
         h1 { font-size: 5.5rem; margin-bottom: 25px; text-shadow: 2px 2px 0px #fff; line-height: 1.2; }
         .signature-title { font-size: 3.5rem; }
         .member-name { font-family: 'Great Vibes', cursive; font-size: 2.5rem; font-weight: 400; margin-top: 10px; color: #5a5a5a; }
 
-        /* ĐỒNG HỒ KỸ THUẬT SỐ HIỆN ĐẠI */
+        /* ĐỒNG HỒ ĐẾM NGƯỢC (Tự động co giãn chống tràn màn hình) */
         .modern-clock {
-            display: inline-flex;
-            align-items: center;
+            display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap;
             background: linear-gradient(135deg, #d63384, #ff6b9e);
-            padding: 15px 40px 25px;
-            border-radius: 50px;
+            padding: 15px 30px 20px; border-radius: 50px;
             box-shadow: 0 15px 35px rgba(214, 51, 132, 0.3), inset 0 0 10px rgba(255,255,255,0.5);
-            color: white;
-            border: 5px solid #fff;
+            color: white; border: 5px solid #fff;
         }
-
-        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 80px; }
-        .time-box span { font-size: 5rem; font-weight: 700; line-height: 1; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .time-box small { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; opacity: 0.9; }
-
-        .colon { font-size: 4rem; font-weight: 700; margin: 0 10px; margin-top: -20px; animation: blink 1s infinite; }
+        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 60px; margin: 0 5px; }
+        .time-box span { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 700; line-height: 1; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .time-box small { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; opacity: 0.9; }
+        .colon { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin: 0 2px; margin-top: -20px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* KHUNG TRÁI TIM GIA ĐÌNH */
+        /* KHUNG TRÁI TIM */
         .heart-frame {
-            width: 170px; height: 170px;
-            margin: 0 auto 15px;
-            background-color: white;
+            width: 170px; height: 170px; margin: 0 auto 15px; background-color: white;
             clip-path: path('M85,165 C85,165 10,113 10,61 C10,33 33,10 57,10 C71,10 80,19 85,24 C90,19 99,10 113,10 C137,10 160,33 160,61 C160,113 85,165 85,165 Z');
-            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.15);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.15); transition: transform 0.3s ease;
         }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; }
         .heart-frame:hover { transform: scale(1.08); }
 
-        /* HIỆU ỨNG ALBUM ẢNH */
+        /* KHUNG THÔNG TIN VÀ ẢNH */
+        .info-card { background: white; border: none; border-radius: 25px; padding: 35px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .gallery-img { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; object-fit: cover; width: 100%; height: 250px; }
         .gallery-img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2) !important; }
 
-        .info-card { background: white; border: none; border-radius: 25px; padding: 35px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
-        /* TRÌNH PHÁT NHẠC GÓC MÀN HÌNH */
+        /* TRÌNH PHÁT NHẠC */
         .music-player-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px 15px;
-            border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(214, 51, 132, 0.2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 2px solid var(--pink-light);
+            position: fixed; bottom: 20px; right: 20px; background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px; border-radius: 50px; box-shadow: 0 5px 20px rgba(214, 51, 132, 0.2);
+            z-index: 1000; display: flex; align-items: center; gap: 10px; border: 2px solid var(--pink-light);
             backdrop-filter: blur(5px);
         }
-        .music-label {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            color: var(--pink-main);
-            font-size: 0.9rem;
-        }
+        .music-label { font-weight: 700; color: var(--pink-main); font-size: 0.9rem; }
         audio { height: 35px; outline: none; }
     </style>
 </head>
@@ -100,9 +72,8 @@
 
     <div class="music-player-container">
         <span class="music-label">🎵 Nhạc nền</span>
-        <audio id="bg-music" controls autoplay loop>
+        <audio id="bg-music" controls loop>
             <source src="https://www.bensound.com/bensound-music/bensound-buddy.mp3" type="audio/mpeg">
-            Trình duyệt không hỗ trợ phát nhạc.
         </audio>
     </div>
 
@@ -110,12 +81,15 @@
         <div class="container">
             <h1>Gia Đình Bé Gạo</h1>
             <div class="modern-clock">
+                <div class="time-box"><span id="dd">00</span><small>Ngày</small></div>
+                <div class="colon">:</div>
                 <div class="time-box"><span id="hh">00</span><small>Giờ</small></div>
                 <div class="colon">:</div>
                 <div class="time-box"><span id="mm">00</span><small>Phút</small></div>
                 <div class="colon">:</div>
                 <div class="time-box"><span id="ss">00</span><small>Giây</small></div>
             </div>
+            <p class="mt-3 fw-bold" style="color: var(--pink-main); letter-spacing: 1px;">Cùng đếm ngược chờ con yêu chào đời ❤️</p>
         </div>
     </header>
 
@@ -158,7 +132,7 @@
                     <h3 class="signature-title mb-4">Video Siêu Âm Bé Gạo</h3>
                     <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-white shadow-sm bg-dark">
                         <video controls poster="https://via.placeholder.com/800x450?text=Bấm+để+xem+video">
-                            <source src="link_video_sieu_am_cua_ban.mp4" type="video/mp4">
+                            <source src="link_video_cua_ban.mp4" type="video/mp4">
                         </video>
                     </div>
                     <p class="mt-3 text-muted fst-italic">Những nhịp tim đầu tiên của con ❤️</p>
@@ -171,32 +145,14 @@
                 <div class="info-card">
                     <h3 class="signature-title mb-4">Địa chỉ nhà mình</h3>
                     <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-white shadow-sm">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d428.2045585038596!2d106.3061159336111!3d20.930843232679808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDU1JzUxLjAiTiAxMDbCsDE4JzI0LjEiRQ!5e0!3m2!1svi!2svn!4v1714443000000!5m2!1svi!2svn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://maps.google.com/maps?q=20.930833,106.306694&hl=vi&z=17&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <a href="https://www.google.com/maps/dir//20.9308333,106.3066944/@20.9308333,106.3066944,19z" target="_blank" class="btn btn-danger btn-lg rounded-pill px-5 mt-4">Chỉ đường về nhà</a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=20.930833,106.306694" target="_blank" class="btn btn-danger btn-lg rounded-pill px-5 mt-4">Chỉ đường về nhà</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('hh').innerText = now.getHours().toString().padStart(2, '0');
-            document.getElementById('mm').innerText = now.getMinutes().toString().padStart(2, '0');
-            document.getElementById('ss').innerText = now.getSeconds().toString().padStart(2, '0');
-        }
-        
-        updateClock();
-        setInterval(updateClock, 1000);
-
-        // Hỗ trợ tự động phát nhạc nếu trình duyệt yêu cầu tương tác trước
-        document.body.addEventListener('click', function() {
-            const audio = document.getElementById('bg-music');
-            if (audio.paused) {
-                audio.play();
-            }
-        }, { once: true });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
