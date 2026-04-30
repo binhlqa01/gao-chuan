@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&family=Lora:ital@1&display=swap" rel="stylesheet">
     
     <style>
         :root { --pink-main: #d63384; --pink-light: #ffdae9; --bg-pink: #fff5f8; }
@@ -23,11 +23,19 @@
             text-align: center; 
         }
         
-        /* PHONG CÁCH CHỮ KÝ - Đã thêm tính năng tự co nhỏ chữ trên điện thoại */
+        /* PHONG CÁCH CHỮ KÝ */
         h1, .signature-title { font-family: 'Great Vibes', cursive; color: var(--pink-main); font-weight: 400; }
-        h1 { font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 25px; text-shadow: 2px 2px 0px #fff; line-height: 1.2; }
-        .signature-title { font-size: clamp(2.5rem, 6vw, 3.5rem); }
-        .member-name { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 6vw, 2.5rem); font-weight: 400; margin-top: 10px; color: #5a5a5a; }
+        h1 { font-size: clamp(3.5rem, 10vw, 5.5rem); margin-bottom: 25px; text-shadow: 2px 2px 0px #fff; line-height: 1.2; }
+        .signature-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+        
+        /* CHỮ KÝ THÀNH VIÊN */
+        .member-name { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(1.8rem, 6vw, 2.5rem); 
+            font-weight: 400; 
+            margin-top: 10px; 
+            color: #5a5a5a; 
+        }
 
         /* ĐỒNG HỒ ĐẾM NGƯỢC */
         .modern-clock {
@@ -37,27 +45,49 @@
             box-shadow: 0 15px 35px rgba(214, 51, 132, 0.3), inset 0 0 10px rgba(255,255,255,0.5);
             color: white; border: 5px solid #fff;
         }
-        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 60px; margin: 0 5px; }
-        .time-box span { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 700; line-height: 1; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .time-box { display: flex; flex-direction: column; align-items: center; min-width: clamp(45px, 12vw, 60px); margin: 0 5px; }
+        .time-box span { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .time-box small { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; opacity: 0.9; }
-        .colon { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin: 0 2px; margin-top: -20px; animation: blink 1s infinite; }
+        .colon { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; margin: 0 2px; margin-top: -20px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
         /* KHUNG TRÁI TIM */
         .heart-frame {
-            width: 170px; height: 170px; margin: 0 auto 15px; background-color: white;
-            clip-path: path('M85,165 C85,165 10,113 10,61 C10,33 33,10 57,10 C71,10 80,19 85,24 C90,19 99,10 113,10 C137,10 160,33 160,61 C160,113 85,165 85,165 Z');
-            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.15); transition: transform 0.3s ease;
+            width: 100%; max-width: 170px; aspect-ratio: 1 / 1; margin: 0 auto 10px; background-color: transparent;
+            clip-path: url(#heart-clip); -webkit-clip-path: url(#heart-clip); transition: transform 0.3s ease;
         }
         .heart-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
         .heart-frame:hover { transform: scale(1.08); }
 
-        /* KHUNG THÔNG TIN VÀ ẢNH */
-        .info-card { background: white; border: none; border-radius: 25px; padding: 35px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .info-card { background: white; border: none; border-radius: 25px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        /* KHUNG LỜI CHÚC ĐẶC BIỆT */
+        .wish-card {
+            background: linear-gradient(to bottom right, #ffffff, #fff5f8);
+            border: 2px dashed var(--pink-light);
+            position: relative;
+            padding: 40px 30px;
+        }
+        .wish-text {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--pink-light);
+            position: absolute;
+            font-family: serif;
+            line-height: 1;
+            opacity: 0.6;
+        }
+        .quote-left { top: 10px; left: 20px; }
+        .quote-right { bottom: -20px; right: 20px; }
+
         .gallery-img { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; object-fit: cover; width: 100%; height: 250px; }
         .gallery-img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2) !important; }
 
-        /* TRÌNH PHÁT NHẠC */
         .music-player-container {
             position: fixed; bottom: 20px; right: 20px; background: rgba(255, 255, 255, 0.9);
             padding: 8px 15px; border-radius: 50px; box-shadow: 0 5px 20px rgba(214, 51, 132, 0.2);
@@ -69,6 +99,12 @@
     </style>
 </head>
 <body>
+
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+        <path d="M0.5,0.97 C0.5,0.97 0.059,0.665 0.059,0.359 C0.059,0.194 0.194,0.059 0.335,0.059 C0.418,0.059 0.471,0.112 0.5,0.141 C0.529,0.112 0.582,0.059 0.665,0.059 C0.806,0.059 0.941,0.194 0.941,0.359 C0.941,0.665 0.5,0.97 0.5,0.97 Z"></path>
+      </clipPath>
+    </svg>
 
     <div class="music-player-container">
         <span class="music-label">🎵 Nhạc nền</span>
@@ -94,34 +130,46 @@
     </header>
 
     <div class="container text-center mb-5" style="margin-top: -40px;">
-        
-        <div class="row g-4 justify-content-center">
-            <div class="col-12 col-sm-6 col-md-3">
+        <div class="row g-3 justify-content-center">
+            <div class="col-6 col-md-3">
                 <div class="heart-frame"><img src="./ba-binh.jpg" alt="Ba Bình" style="object-position: center center;"></div>
                 <div class="member-name">Ba Bình</div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="heart-frame"><img src="./methuchuan.png" alt="Mẹ" style="object-position: center 10%;"></div>
+            <div class="col-6 col-md-3">
+                <div class="heart-frame"><img src="./me.jpg" alt="Mẹ"></div>
                 <div class="member-name">Mẹ</div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="heart-frame"><img src="./anhin.jpg" alt="Anh Ỉn" style="object-position: center center;"></div>
+            <div class="col-6 col-md-3">
+                <div class="heart-frame"><img src="./anh-in.jpg" alt="Anh Ỉn" style="object-position: center center;"></div>
                 <div class="member-name">Anh Ỉn (2019)</div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="heart-frame"><img src="./be-gao.jpg" alt="Bé Gạo" style="object-position: center center;"></div>
+            <div class="col-6 col-md-3">
+                <div class="heart-frame"><img src="./be-gao.jpg" alt="Bé Gạo"></div>
                 <div class="member-name" style="color: var(--pink-main);">Bé Gạo (2026)</div>
             </div>
         </div>
 
         <div class="row mt-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="info-card wish-card">
+                    <span class="quote-icon quote-left">“</span>
+                    <h3 class="signature-title mb-3">Gửi thiên thần nhỏ của Ba Mẹ</h3>
+                    <p class="wish-text fst-italic">
+                        Chào mừng con yêu đến với thế giới này và đến với gia đình mình. Ba Bình, mẹ và anh Ỉn đã đếm từng ngày, từng giờ để được nhìn thấy khuôn mặt nhỏ nhắn của con. Chúc bé Gạo của ba mẹ một đời bình an, hay ăn chóng lớn, luôn vui vẻ và hạnh phúc. Cả nhà yêu con rất nhiều!
+                    </p>
+                    <span class="quote-icon quote-right">”</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
             <div class="col-12">
                 <div class="info-card">
                     <h3 class="signature-title mb-4">Khoảnh Khắc Gia Đình</h3>
                     <div class="row g-3">
-                        <div class="col-md-4 col-12"><img src="https://via.placeholder.com/600x400?text=Ảnh+Gia+Đình+1" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
-                        <div class="col-md-4 col-6"><img src="https://via.placeholder.com/600x400?text=Ảnh+Gia+Đình+2" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
-                        <div class="col-md-4 col-6"><img src="https://via.placeholder.com/600x400?text=Ảnh+Gia+Đình+3" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
+                        <div class="col-md-4 col-12"><img src="./album-1.jpg" alt="Ảnh gia đình" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
+                        <div class="col-md-4 col-6"><img src="./album-2.jpg" alt="Ảnh gia đình" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
+                        <div class="col-md-4 col-6"><img src="./album-3.jpg" alt="Ảnh gia đình" class="img-fluid rounded-4 shadow-sm gallery-img"></div>
                     </div>
                 </div>
             </div>
@@ -132,8 +180,8 @@
                 <div class="info-card">
                     <h3 class="signature-title mb-4">Video Siêu Âm Bé Gạo</h3>
                     <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-white shadow-sm bg-dark">
-                        <video controls poster="https://via.placeholder.com/800x450?text=Bấm+để+xem+video">
-                            <source src="link_video_cua_ban.mp4" type="video/mp4">
+                        <video controls>
+                            <source src="./video-gao.mp4" type="video/mp4">
                         </video>
                     </div>
                     <p class="mt-3 text-muted fst-italic">Những nhịp tim đầu tiên của con ❤️</p>
