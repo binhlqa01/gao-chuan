@@ -23,13 +23,13 @@
             text-align: center; 
         }
         
-        /* PHONG CÁCH CHỮ KÝ */
+        /* PHONG CÁCH CHỮ KÝ - Đã thêm tính năng tự co nhỏ chữ trên điện thoại */
         h1, .signature-title { font-family: 'Great Vibes', cursive; color: var(--pink-main); font-weight: 400; }
-        h1 { font-size: 5.5rem; margin-bottom: 25px; text-shadow: 2px 2px 0px #fff; line-height: 1.2; }
-        .signature-title { font-size: 3.5rem; }
-        .member-name { font-family: 'Great Vibes', cursive; font-size: 2.5rem; font-weight: 400; margin-top: 10px; color: #5a5a5a; }
+        h1 { font-size: clamp(3.5rem, 8vw, 5.5rem); margin-bottom: 25px; text-shadow: 2px 2px 0px #fff; line-height: 1.2; }
+        .signature-title { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+        .member-name { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 6vw, 2.5rem); font-weight: 400; margin-top: 10px; color: #5a5a5a; }
 
-        /* ĐỒNG HỒ ĐẾM NGƯỢC (Tự động co giãn chống tràn màn hình) */
+        /* ĐỒNG HỒ ĐẾM NGƯỢC */
         .modern-clock {
             display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap;
             background: linear-gradient(135deg, #d63384, #ff6b9e);
@@ -43,14 +43,15 @@
         .colon { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin: 0 2px; margin-top: -20px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-      /* KHUNG TRÁI TIM */
-.heart-frame {
-    width: 170px; height: 170px; margin: 0 auto 15px; background-color: white;
-    clip-path: path('M85,165 C85,165 10,113 10,61 C10,33 33,10 57,10 C71,10 80,19 85,24 C90,19 99,10 113,10 C137,10 160,33 160,61 C160,113 85,165 85,165 Z');
-    box-shadow: 0 8px 15px rgba(214, 51, 132, 0.15); transition: transform 0.3s ease;
-}
-.heart-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
-.heart-frame:hover { transform: scale(1.08); }
+        /* KHUNG TRÁI TIM */
+        .heart-frame {
+            width: 170px; height: 170px; margin: 0 auto 15px; background-color: white;
+            clip-path: path('M85,165 C85,165 10,113 10,61 C10,33 33,10 57,10 C71,10 80,19 85,24 C90,19 99,10 113,10 C137,10 160,33 160,61 C160,113 85,165 85,165 Z');
+            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.15); transition: transform 0.3s ease;
+        }
+        .heart-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
+        .heart-frame:hover { transform: scale(1.08); }
+
         /* KHUNG THÔNG TIN VÀ ẢNH */
         .info-card { background: white; border: none; border-radius: 25px; padding: 35px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .gallery-img { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; object-fit: cover; width: 100%; height: 250px; }
@@ -72,7 +73,7 @@
     <div class="music-player-container">
         <span class="music-label">🎵 Nhạc nền</span>
         <audio id="bg-music" controls loop>
-            <source src="nhac.mp3" type="audio/mpeg">
+            <source src="./nhac.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -93,21 +94,22 @@
     </header>
 
     <div class="container text-center mb-5" style="margin-top: -40px;">
-        <div class="row g-3 justify-content-center">
-            <div class="col-6 col-md-3">
-                <div class="heart-frame"><img src="./bobinh.jpg" alt="Ba Bình" style="object-position: center center;">
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="heart-frame"><img src="./ba-binh.jpg" alt="Ba Bình" style="object-position: center center;"></div>
                 <div class="member-name">Ba Bình</div>
             </div>
-            <div class="col-6 col-md-3">
-                <div class="heart-frame"><img src="./methuchuan(1).jpg" alt="Mẹ Thu" style="object-position: center center;"></div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="heart-frame"><img src="./me.jpg" alt="Mẹ" style="object-position: center 10%;"></div>
                 <div class="member-name">Mẹ</div>
             </div>
-            <div class="col-6 col-md-3">
-                <div class="heart-frame"><img src="anhin.jpg" alt="Anh Ỉn"></div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="heart-frame"><img src="./anh-in.jpg" alt="Anh Ỉn" style="object-position: center center;"></div>
                 <div class="member-name">Anh Ỉn (2019)</div>
             </div>
-            <div class="col-6 col-md-3">
-                <div class="heart-frame"><img src="https://via.placeholder.com/400?text=Bé+Gạo" alt="Bé Gạo"></div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="heart-frame"><img src="./be-gao.jpg" alt="Bé Gạo" style="object-position: center center;"></div>
                 <div class="member-name" style="color: var(--pink-main);">Bé Gạo (2026)</div>
             </div>
         </div>
